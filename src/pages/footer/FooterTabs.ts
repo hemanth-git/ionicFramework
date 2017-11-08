@@ -1,4 +1,5 @@
-import { ManageRootPageService } from './../../services/ManageRootPage.service';
+import { ManageRootPageService } from './../../services/ManageRootPageService';
+
 import { HomePage } from './../home/HomePage';
 import { CartPage } from './../cart/CartPage';
 

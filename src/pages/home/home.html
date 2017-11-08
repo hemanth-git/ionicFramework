@@ -6,22 +6,30 @@
     <ion-title>Home</ion-title>
     <ion-buttons end>
       <button ion-button icon-only end (tap)="showSearch=true">
-
         <ion-icon name="search"></ion-icon>
       </button>
     </ion-buttons>
 
   </ion-navbar>
 
-  <ion-searchbar *ngIf="showSearch" [(ngModel)]="searchText" [showCancelButton]="true" (ionInput)="search($event)" (ionCancel)="cancelSearch($event)">
+  <ion-searchbar *ngIf="showSearch" [(ngModel)]="searchText" [debounce]="500" [showCancelButton]="true" (ionInput)="search($event)"
+    (ionCancel)="cancelSearch($event)">
   </ion-searchbar>
-
-
 
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <div *ngIf="!showSearch">
+    <h3>Ionic Menu Starter</h3>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+    <button ion-button secondary menuToggle>Toggle Menu</button>
+  </div>
+  <ion-list *ngIf="showSearch">
+    <button ion-item *ngFor="let product of searchResults">
+      <div class="item-note" item-start>
+        {{product}}
+      </div>
+    </button>
+  </ion-list>
+
 </ion-content>

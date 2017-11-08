@@ -1,5 +1,5 @@
+import { ManageRootPageService } from './../../services/ManageRootPageService';
 import { CartPage } from './../cart/CartPage';
-import { ManageRootPageService } from './../../services/ManageRootPage.service';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Platform, Nav } from 'ionic-angular';
@@ -18,7 +18,9 @@ export class MenuNavigationPage implements OnInit {
 
     pages: Array<{ title: string, component: any }>;
 
-    constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private manageRootPageService: ManageRootPageService) {
+    constructor(private platform: Platform, private statusBar: StatusBar,
+        private splashScreen: SplashScreen, private manageRootPageService: ManageRootPageService) {
+
         this.initializeApp();
 
         // used for an example of ngFor and navigation

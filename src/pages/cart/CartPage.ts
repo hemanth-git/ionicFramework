@@ -1,6 +1,6 @@
+import { ProductService } from './../../services/ProductService';
+import { LoadingIndicatorService } from './../../services/loadingIndicatorService';
 
-import { HttpService } from './../../services/httpService.service';
-import { LoadingIndicator } from './../../services/loadingIndicator.service';
 
 import { Component, OnInit } from '@angular/core';
 
@@ -11,22 +11,25 @@ import { Component, OnInit } from '@angular/core';
 
 export class CartPage implements OnInit, MyRootPage {
 
-
-
-
-    constructor(private loadingIndicator: LoadingIndicator, private httpService: HttpService) {
+    constructor(private loadingIndicator: LoadingIndicatorService,
+        private productService: ProductService) {
 
     }
 
-    ngOnInit() {
-        //this.loadingIndicator.showLoading();
-        this.loadingIndicator.showLoading();
-        this.httpService.callLateService().subscribe(data => {
-            console.log('call 1');
-            this.loadingIndicator.hideLoading();
-        }, error => {
+    searchProduct() {
+        this.productService.getProducts().subscribe(data => {
 
         });
+    }
+    ngOnInit() {
+        //this.loadingIndicator.showLoading();
+        // this.loadingIndicator.showLoading();
+        // this.httpService.callLateService().subscribe(data => {
+        //     console.log('call 1');
+        //     this.loadingIndicator.hideLoading();
+        // }, error => {
+
+        // });
     }
 
 }

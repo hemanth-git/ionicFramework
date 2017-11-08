@@ -1,3 +1,5 @@
+import { ProductService } from './../../services/ProductService';
+import { LoadingIndicatorService } from './../../services/loadingIndicatorService';
 
 import { Component } from '@angular/core';
 
@@ -9,12 +11,34 @@ export class HomePage implements MyRootPage {
 
   showSearch = false;
   searchText: string;
+  searchResults = [];
 
-  search(text) {
-    console.log("search text: " + this.searchText);
+  constructor(private loadingIndicator: LoadingIndicatorService,
+    private productService: ProductService) {
+      this.searchResults = ["error"];
 
   }
-  cancelSearch(event) {
+  /**
+   * Searches for product.
+   * @param text 
+   */
+  search(text: string): void {
+    console.log("search text: " + this.searchText);
+    this.loadingIndicator.showLoading();
+    this.productService.getProducts().subscribe(data => {
+      console.log('search data: ', data);
+      this.loadingIndicator.hideLoading();
+    }, error => {
+      this.loadingIndicator.hideLoading();
+      this.searchResults = [error];
+    });
+  }
+
+  /**
+   * disables search text box.
+   * @param event 
+   */
+  cancelSearch(event): void {
     this.showSearch = false;
   }
   // @ViewChild(Nav) nav: Nav;

@@ -1,7 +1,8 @@
-import { HttpService } from './../services/httpService.service';
-import { LoadingIndicator } from './../services/loadingIndicator.service';
+import { ProductService } from './../services/ProductService';
+import { LoadingIndicatorService } from './../services/loadingIndicatorService';
+import { ManageRootPageService } from './../services/ManageRootPageService';
+
 import { MenuNavigationPage } from './../pages/menu-navigation/MenuNavigationPage';
-import { ManageRootPageService } from './../services/ManageRootPage.service';
 import { MyApp } from './MyApp';
 import { ListPage } from './../pages/list/list';
 import { CartPage } from './../pages/cart/CartPage';
@@ -39,7 +40,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    ManageRootPageService, LoadingIndicator, HttpService
+    ManageRootPageService, LoadingIndicatorService, ProductService
   ]
 })
 
