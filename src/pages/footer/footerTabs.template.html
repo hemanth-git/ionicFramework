@@ -1,0 +1,9 @@
+<ion-footer>
+    <ion-toolbar>
+        <!-- <ion-title>Footer</ion-title> -->
+        <ion-tabs selectedIndex="0">
+            <ion-tab tabIcon="home" tabTitle="Home" [root]="homePage" (ionSelect)="emitRootPageEvent(homePage)"></ion-tab>
+            <ion-tab tabIcon="cart" tabTitle="Cart" [root]="cartPage" (ionSelect)="emitRootPageEvent(cartPage)"></ion-tab>
+        </ion-tabs>
+    </ion-toolbar>
+</ion-footer>
